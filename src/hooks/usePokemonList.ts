@@ -20,6 +20,7 @@ const usePokemonList = () => {
         const data = await response.json();
         console.log(data);
         setPokemonList(data.results);
+        // localStorage.setItem("pokemon",data.results)
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -28,6 +29,8 @@ const usePokemonList = () => {
     };
 
     fetchPokemonList();
+
+    
   }, []);
 
   return { pokemonList, loading, error };

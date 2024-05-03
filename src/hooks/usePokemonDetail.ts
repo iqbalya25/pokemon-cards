@@ -19,7 +19,11 @@ const usePokemonDetails = (pokemonName: string) => {
   useEffect(() => {
     const fetchPokemonDetails = async () => {
       try {
+        
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+        
+
+
         if (!response.ok) {
           throw new Error('Failed to fetch Pokémon details.');
         }
@@ -30,6 +34,7 @@ const usePokemonDetails = (pokemonName: string) => {
         const health = data.stats.find((stat: any) => stat.stat.name === 'hp').base_stat;
         const attack = data.stats.find((stat: any) => stat.stat.name === 'attack').base_stat;
         const defense = data.stats.find((stat: any) => stat.stat.name === 'defense').base_stat;
+        
 
         setPokemonDetails({ name, id, health, attack, defense, spriteFront, artworkFront });
         setLoading(false);
